@@ -4,75 +4,35 @@
 <meta charset="UTF-8">
 <title>Lịch công tác ĐNPC</title>
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-}
-
-.back-btn {
-    background: white;
-    color: #164397 !important;
-    padding: 6px 15px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-    margin-right: 15px;
-    white-space: nowrap;
-}
-            
-.day-title {
-    color: #164397;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-size: 20px;
-    position: sticky;
-    top: 0;
-    background: #f5f5f5;
-    padding: 10px 0;
-    z-index: 10;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-}
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-}
-th {
-    background-color: #164397;
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-    top: 40px; /* nằm dưới tiêu đề ngày */
-    z-index: 9;
-}
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-tr:hover {
-    background-color: #ffe5e5;
-    transition: background-color 0.3s ease;
-}
-hr {
-    border: none;
-    border-top: 2px solid #ddd;
-    margin: 30px 0;
-}
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; min-width: 1000px; }
+    .header-nav { position: sticky; top: 0; background: #f5f5f5; z-index: 100; padding-bottom: 15px; }
+    .back-btn { display: inline-block; background: white; color: #164397 !important; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 20px; margin-bottom: 15px; border: 2px solid #164397; }
+    .tab-container { display: flex; gap: 15px; align-items: center; }
+    .tab-btn { padding: 10px 30px; cursor: pointer; font-weight: bold; border-radius: 8px; font-size: 20px; border: 2px solid; background: white; }
+    .btn-donvi { color: #164397; border-color: #164397; }
+    .btn-donvi.active { background: #164397; color: white; }
+    .btn-lanhdao { color: #e67e22; border-color: #e67e22; }
+    .btn-lanhdao.active { background: #e67e22; color: white; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .day-title { color: #164397; margin: 30px 0 15px; font-size: 24px; background: #e9e9e9; padding: 10px; border-radius: 5px; }
+    table { width: 100%; min-width: 900px; border-collapse: collapse; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-size: 16px; margin-bottom: 20px; }
+    th, td { padding: 12px; border: 1px solid #ccc; }
+    th { background: #164397; color: white; }
+    tr:nth-child(even) { background: #fafafa; }
+    tr:hover { background: #fff9c4; }
+    hr { border: none; border-top: 2px solid #ccc; margin: 40px 0; }
 </style>
 </head>
 <body>
-<a href="https://bao-1340.github.io/LichTuanDNPC/" class="back-btn">← Quay lại</a>
-<h2 class='day-title'>Thứ 4 ngày 6 tháng 5 năm 2026</h2>
+<div class="header-nav">
+    <a href="https://bao-1340.github.io/LichTuanDNPC/" class="back-btn">← Quay lại</a>
+    <div class="tab-container">
+        <button class="tab-btn btn-donvi active" onclick="openTab(event, 'donvi')">LỊCH ĐƠN VỊ</button>
+        <button class="tab-btn btn-lanhdao" onclick="openTab(event, 'lanhdao')">LỊCH LÃNH ĐẠO</button>
+    </div>
+</div>
+<div id="donvi" class="tab-content active"><h2 class='day-title'>Thứ 4 ngày 6 tháng 5 năm 2026</h2>
 <div class="row" style="overflow:auto;">
  <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
   <thead>
@@ -893,7 +853,7 @@ hr {
      QLĐT
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
@@ -982,7 +942,7 @@ hr {
     <td class="text-center">
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
@@ -1535,7 +1495,7 @@ hr {
      TCNS, VTCNTT
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
@@ -2021,7 +1981,7 @@ hr {
      TCNS, ÐLST
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
@@ -2430,12 +2390,12 @@ hr {
      QLDA, QLĐT
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
     <td>
-     <span class="badge badge-primary p-1">
+     <span class="badge badge-primary p-1" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
      , PGĐ Lưu Đức Lợi, PGĐ.ĐTXD Phan Hiền Trí, PGĐ.ĐTXD Phạm Văn Hồng, PGĐ.KT Võ Anh Hùng, KTT, KH, TCNS, KT, TCKT, QLDA, QLĐT, XNLĐCT, ĐLHA, ĐLDX, ĐLHĐ, ĐLTKy, ĐLTB, ĐLNT, ĐLTP, ĐLQS, ĐLĐG
@@ -2694,7 +2654,7 @@ hr {
      KH, TCNS, KT, KD, ĐĐ, VTCNTT, ÐLST
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
+     <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
       GIÁM ĐỐC
      </span>
     </td>
@@ -3285,9 +3245,7 @@ hr {
     <td class="text-center">
     </td>
     <td class="text-center" style="font-weight:bold;">
-     <span class="badge badge-primary p-2">
-      GIÁM ĐỐC
-     </span>
+     PGĐ.KT Nguyễn Đình Tuân
     </td>
     <td>
      KH
@@ -4215,4 +4173,1388 @@ hr {
  </table>
 </div>
 <hr>
-</body></html>
+</div>
+<div id="lanhdao" class="tab-content"><h2 class='day-title'>Thứ 4 ngày 6 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT xã Quế Sơn, 02 Tôn Đức Thắng, xã Quế Sơn
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0000FF;">
+      PGĐ.KD Phan Văn Tuấn
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLQS
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135312">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Tập trung tại nút giao giữa đường ĐH2 và đường Hoàng Văn Thái nối dài để đi kiểm tra thực tế theo chương trình
+     </span>
+    </td>
+    <td class="py-1">
+     Tham gia buổi kiểm tra thực tế Dự án đầu tư xây dựng và kinh doanh kết cấu hạ tầng Khu công nghiệp Hòa Ninh
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td class="py-1">
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135318">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      TTHC P. Ngũ Hành Sơn, 486 Lê Văn Hiến, P. Ngũ Hành Sơn
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0099CC;">
+      PGĐ.ĐTXD Phạm Văn Hồng
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLST
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135304">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#ef0202;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:30
+     </span>
+     -
+     <span>
+      12:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Tập trung tại cổng Khu Công nghệ cao Đà Nẵng
+     </span>
+     <br/>
+     <span class="badge badge-danger" style="font-size:14px;">
+      Hủy
+     </span>
+    </td>
+    <td class="py-1">
+     Khảo sát thực tế chủ trương chuyển mục đích sử dụng rừng sang mục đích  khác để thực hiện dự án Tuyến đường kết nối đường Vành đai phía Tây  đến cao tốc La Sơn – Túy Loan (phía sau Khu Công nghệ cao)
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     VP
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135300">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:30
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 5.01 - PH Hoàng Sa - 50
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px">
+     </img>
+    </td>
+    <td class="py-1">
+     Họp Tổ chỉ đạo xử lý các vướng mắc trong công tác ĐTXD đối với các dự án trọng điểm năm 2026 - Phiên 03 (Lịch EVNCPC)
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     GĐPC, KT, QLDA, QLĐT, KH
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135218">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     QLĐT
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     VTCNTT hỗ trợ kết nối
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#F3F3F3;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      09:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Nhà điều hành Điện lực Duy Xuyên
+     </span>
+    </td>
+    <td class="py-1">
+     Khảo sát diễn tập XLSC, PCTT&amp;TKCN năm 2026
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td class="py-1">
+     Kính mời PGĐKT Võ anh Hùng, ĐĐ, KT, AT, VP, VTCNTT, ĐLHA, ĐLĐB, ĐLDX, ĐLCL, ĐLNT, SCNLĐ, XNLĐCT
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135216">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     AT
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      15:15
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 5.01 - PH Hoàng Sa - 50
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px">
+     </img>
+    </td>
+    <td class="py-1">
+     Họp xây dựng bộ chỉ tiêu KPI năm 2026
+     <br/>
+     <br/>
+     <span class="small" style="font-style:oblique; color:#0361c5;">
+      *** Họp qua Zoom
+      <br/>
+      Link:
+     </span>
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     Ban Giám đốc Công ty, Chủ tịch Công đoàn, Văn phòng, các phòng Kế hoạch, TCNS, Kỹ thuật, TCKT, Kinh doanh, An toàn, Điều độ, VTCNTT, Ban QLDA.
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135213">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     TCNS, VTCNTT
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     Nhờ P.VTCNTT chuẩn bị kết nối
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Phước Trà,  Phước Trà Thôn Trà Sơn, xã Phước Trà
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0000FF;">
+      PGĐ.KD Phan Văn Tuấn
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLHĐ
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135311">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Hội trường số 1, Tầng 2, Tòa nhà TTHC Thành phố , số 24 Trần Phú
+     </span>
+    </td>
+    <td class="py-1">
+     Họp nghe Ban quản lý các dự án đầu tư cơ sở hạ tầng ưu tiên báo cáo tình hình thực hiện, giải ngân kế hoạch vốn và kế hoạch thực hiện các công trình, dự án thời gian đến
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A52A2A;">
+      PGĐ.ĐTXD Phan Hiền Trí
+     </span>
+    </td>
+    <td class="py-1">
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135355">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     KH
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     KH chuẩn bị nội dung
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Hòa Vang, 2 Dương Lâm 2, xã Hòa Vang
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0099CC;">
+      PGĐ.ĐTXD Phạm Văn Hồng
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLHV, ĐLCL
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135305">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      15:30
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      4.06 - Sơn Trà
+     </span>
+    </td>
+    <td class="py-1">
+     Sinh hoạt định kỳ tháng 5, Chi bộ KH
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     KH
+    </td>
+    <td class="py-1">
+     Kính mời Bí thư Đảng ủy Công ty, Toàn thể đảng viên chi bộ KH
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135245">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     KH
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      15:30
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 5.01 - PH Hoàng Sa - 50
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px">
+     </img>
+    </td>
+    <td class="py-1">
+     Họp rà soát chuẩn bị làm việc với EVN về việc rà soát, sửa đổi định mức lao đông SXKD điện
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     - Kính mời: Giám đốc Công ty, các Phó Giám đốc Công ty, Kế toán trưởng.
+     <br/>
+     - Các phòng: TCNS, KH, KT, KD, ĐĐ, VTCNTT, VP.
+     <br/>
+     - Mời Điện lực Sơn Trà.
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135281">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     TCNS, ÐLST
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     Nhờ P.CNTT chuẩn bị kết nối trực tuyến
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 5 ngày 7 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      4.04 - Mỹ Khê - 25
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px"/>
+    </td>
+    <td class="py-1">
+     Chuẩn bị phương án triển khai cài đặt công tơ điện tử phục vụ thay đổi khung giờ cao điểm, thấp điểm và bình thường
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0000FF;">
+      PGĐ.KD Phan Văn Tuấn
+     </span>
+    </td>
+    <td class="py-1">
+     - Kính mời: Anh Phan Văn Tuấn - PGĐ KD
+     <br/>
+     - Các phòng: KD, KH, VTCNTT
+     <br/>
+     - Các Điện lực KV1 tham dự trực tiếp tại Công ty, Các Điện lực KV2 tham dự trực tuyến
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135212">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     Phòng VTCNTT hỗ trợ kết nối trực tuyến trước 15 phút
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 4.03 - Tiên Sa - 21
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px"/>
+    </td>
+    <td class="py-1">
+     Đánh giá tình hình thực hiện công tác BTGPMB quý 1/2026, triển khai kế hoạch quý 2/2026 các dự án ĐTXD trên địa bàn Đà Nẵng
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     <span class="badge badge-primary p-1" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+      GIÁM ĐỐC
+     </span>
+     , PGĐ Lưu Đức Lợi, PGĐ.ĐTXD Phan Hiền Trí, PGĐ.ĐTXD Phạm Văn Hồng, PGĐ.KT Võ Anh Hùng, KTT, KH, TCNS, KT, TCKT, QLDA, QLĐT, XNLĐCT, ĐLHA, ĐLDX, ĐLHĐ, ĐLTKy, ĐLTB, ĐLNT, ĐLTP, ĐLQS, ĐLĐG
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135152">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     QLDA, QLĐT
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     CNTT hỗ trợ kết nối
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      TTHN xã Thạnh Mỹ, Thôn Mực, xã Thạnh Mỹ
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A52A2A;">
+      PGĐ.ĐTXD Phan Hiền Trí
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLNG
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135302">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      13:15
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Hội trường số 3 tầng 2 TTHC tp ĐN số 24 Trần Phú phường Hải Châu tp Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     GM Tham dự và nhận khen thưởng tại Hội nghị tổng kết phong trào thi đua yêu nước, biểu dương điển hình tiên tiến năm 2025, đánh giá tình hình phát triển kinh tế xã hội, thu chi ngân sách nhà nước, giải ngân vốn đầu tư công; thu hồi đất và giải phóng mặt bằng; trên địa bàn thành phố 4 tháng đầu năm 2026; phương hướng nhiệm vụ các tháng cuối năm 2026; hướng dẫn công tác quy hoạch đô thị - nông thôn
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0099CC;">
+      PGĐ.ĐTXD Phạm Văn Hồng
+     </span>
+    </td>
+    <td class="py-1">
+     PGĐ.ĐTXD Phạm Văn Hồng
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135351">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     TCNS
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      13:30
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 5.01 - PH Hoàng Sa - 50
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px">
+      <br/>
+      <span class="badge badge-info" style="font-size:12px;">
+       Bổ sung
+      </span>
+     </img>
+    </td>
+    <td class="py-1">
+     Làm việc với EVN về định mức lao động SXKD điện, định biên lao động quản lý gián tiếp tại ĐNPC
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td class="py-1">
+     - Kính mời: Giám đốc Công ty, các Phó Giám đốc Công ty, Kế toán trưởng.
+     <br/>
+     - Trưởng các phòng: TCNS, KH, KT, KD, ĐĐ, VTCNTT.
+     <br/>
+     - Trưởng các Điện lực KV1 và Trưởng Xí nghiệp LĐCT tham dự trực tiếp tại Công ty.
+     <br/>
+     - Trưởng các Điện lực KV2 tham dự trực tuyến.
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135287">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     KH, TCNS, KT, KD, ĐĐ, VTCNTT, ÐLST
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     Nhờ P.VTCNTT chuẩn bị kết nối trực tuyến trước 30 phút.
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Thượng Đức, Thôn Tân Hà, xã Thượng Đức
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLĐL
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135313">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND P. Quảng Phú, Khối phố An Hà Đông, P. Quảng Phú
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#008242;">
+      PGĐ.KT Võ Anh Hùng
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLTK
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135321">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      4.04 - Mỹ Khê - 25
+     </span>
+    </td>
+    <td class="py-1">
+     Họp về bàn giao tài sản lưới điện Dự án cấp điện nông thôn từ lưới điện quốc gia tỉnh Quảng Nam giai  đoạn 2019-2020
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0000FF;">
+      PGĐ.KD Phan Văn Tuấn
+     </span>
+    </td>
+    <td class="py-1">
+     KH, KT, TCKT, Ban QLDA ĐTXD các công trình dân dụng, công nghiệp và hạ tầng kỹ thuật Đà Nẵng
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135214">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      16:30
+     </span>
+     -
+     <span>
+      19:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      35 Trường Sa phường Ngũ Hành Sơn tp Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     Thư mời tham dự Chương trình công bố Lễ hội Đà Nẵng Food Tour 2026
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0000FF;">
+      PGĐ.KD Phan Văn Tuấn
+     </span>
+    </td>
+    <td class="py-1">
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135309">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr>
+    <td colspan="8" style="background-color:#fdf6b9; height:30px;">
+     <span class="h7 text-primary" style="font-weight:bold;">
+      LỊCH CHỜ DUYỆT
+     </span>
+     <div class="pull-right">
+      <span class="badge badge-danger" style="font-size:14px;">
+       1
+      </span>
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      09:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      5.01 - PH Hoàng Sa - 50
+     </span>
+    </td>
+    <td class="py-1">
+     Hội thảo giới thiệu sản phẩm chế phẩm vệ sinh và tăng cường cách điện cho sứ cách điện
+    </td>
+    <td class="text-center p-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td>
+     KH, KT, ĐĐ, AT, QLĐT, ÐLLC, ÐLST, ÐLCL, Đội SCN, XNLĐCT, ÐLÐL, ÐLHA, Công ty TNHH Công nghệ GT Việt Nam
+    </td>
+    <td class="text-center p-1">
+    </td>
+    <td class="p-1" style="max-width:300px;">
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 6 ngày 8 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Hội trường số 3 tầng 2 TTHC TP số 24 Trần Phú phường Hải Châu tp Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     GM tham dự Diễn đàn Đối thoại doanh nghiệp năm 2026
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td class="py-1">
+     KH
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135317">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Tiên Phước, 81 Huỳnh Thúc Kháng, thôn Tiên Bình
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#008242;">
+      PGĐ.KT Võ Anh Hùng
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLTP
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135322">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Tây Giang, Đường số 3, TTHN xã Tây Giang
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A300CC;">
+      PGĐ.KD Bùi Đỗ Quốc Huy
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLĐG
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135308">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      10:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Phòng 182-Ban QLDA
+     </span>
+    </td>
+    <td class="py-1">
+     Mở thầu Gói thầu số 1: Cung cấp vật tư, thi công xây dựng và lắp đặt thiết bị hệ thống điện mặt trời cấp điện cho các hộ dân và cấp điện cho trạm BTS Trà Leng-Dự án: Cấp điện trạm BTS thôn 3, xã Trà Leng thành phố Đà Nẵng
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0099CC;">
+      PGĐ.ĐTXD Phạm Văn Hồng
+     </span>
+    </td>
+    <td class="py-1">
+     QLDA, KH, KT, TCKT, PC
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135191">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT UBND xã Chiên Đàn, Thôn Tam Cảnh, xã Chiên Đàn
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#008242;">
+      PGĐ.KT Võ Anh Hùng
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLTP
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135320">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      NVH thôn AXờ, xã Bến Hiên, Xã Bến Hiên, Tp. Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A52A2A;">
+      PGĐ.ĐTXD Phan Hiền Trí
+     </span>
+    </td>
+    <td class="py-1">
+     ĐLĐG
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135303">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      5.01 - PH Hoàng Sa - 50
+     </span>
+     <br/>
+     <img src="https://raw.githubusercontent.com/Bao-1340/LichTuanDNPC/refs/heads/main/hnth.png" width="30px">
+     </img>
+    </td>
+    <td class="py-1">
+     EVNCPC phổ biến Quy chế mua sắm trong EVNCPC và triển khai các công tác quản lý về đấu thầu trong thời gian đến (trực tuyến theo Lịch EVNCPC)
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#0099CC;">
+      PGĐ.ĐTXD Phạm Văn Hồng
+     </span>
+    </td>
+    <td class="py-1">
+     Kính mời PGĐ phụ trách công tác đấu thầu; Lãnh đạo các đơn vị: VP, VTCNTT, KH, KT, TCKT, PC, ĐT, QLDA; cán bộ làm công tác đấu thầu; thành viên các Tổ thẩm định và Tổ chuyên gia.
+     <button class="PHANCONG btn btn-sm btn-link" type="button" value="135235">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+     Phòng VT&amp;CNTT: kết nối Link với EVNCPC
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 7 ngày 9 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      HT tầng 3 — TTHC Thành phố, 24 Trần Phú, P. Hải Châu
+     </span>
+    </td>
+    <td class="py-1">
+     Họp tiếp xúc cử tri báo cáo kết quả Kỳ họp thứ Nhất, Quốc hội khóa XVI
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A52A2A;">
+      PGĐ.ĐTXD Phan Hiền Trí
+     </span>
+    </td>
+    <td class="py-1">
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135319">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      09:30
+     </span>
+     -
+     <span>
+      16:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+     </span>
+    </td>
+    <td class="py-1">
+     Làm việc với Đoàn báo chí miền Nam, EVN và EVNSPC, EVNCPC
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A300CC;">
+      PGĐ.KD Bùi Đỗ Quốc Huy
+     </span>
+    </td>
+    <td class="py-1">
+     VP, ÐLHA
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135326">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+     VP
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Chủ nhật ngày 10 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+  </tbody>
+ </table>
+</div>
+<hr>
+<br><h2 class='day-title' style='background:#e67e22; color:white;'>LỊCH KHÁC</h2>
+<table class="table table-sm table-bordered" id="tblLichLD">
+ <thead>
+  <tr bgcolor="#F5F2F2" class="text-dark" id="TableHeaderRow2">
+   <th class="text-center" id="TableHeaderCell10" style="min-width: 100px" width="200">
+    Thời gian
+   </th>
+   <th class="text-center" id="TableHeaderCell14" style="min-width: 130px" width="200">
+    Lãnh đạo
+   </th>
+   <th class="text-center" id="TableHeaderCell13" style="min-width: 200px">
+    Nội dung
+   </th>
+   <th class="text-center" id="TableHeaderCell12" style="min-width: 150px" width="300">
+    Địa điểm
+   </th>
+   <th class="text-center" id="TableHeaderCell18" style="min-width: 150px" width="300">
+    Cùng tham gia
+   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td class="text-center text-dark">
+    Từ 07:30 ngày 04/05/2026
+    <br/>
+    đến 17:00 ngày 08/05/2026
+   </td>
+   <td>
+    Phó Giám đốc Lưu Đức Lợi
+   </td>
+   <td>
+    Tham gia học lớp Cao cấp chính trị
+   </td>
+   <td>
+    Học viện chính trị KV III
+   </td>
+   <td>
+   </td>
+  </tr>
+ </tbody>
+</table>
+</div>
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+    window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>

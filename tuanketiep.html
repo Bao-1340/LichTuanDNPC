@@ -4,75 +4,35 @@
 <meta charset="UTF-8">
 <title>Lịch công tác ĐNPC</title>
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-}
-
-.back-btn {
-    background: white;
-    color: #164397 !important;
-    padding: 6px 15px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-    margin-right: 15px;
-    white-space: nowrap;
-}
-            
-.day-title {
-    color: #164397;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-size: 20px;
-    position: sticky;
-    top: 0;
-    background: #f5f5f5;
-    padding: 10px 0;
-    z-index: 10;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-}
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-}
-th {
-    background-color: #164397;
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-    top: 40px; /* nằm dưới tiêu đề ngày */
-    z-index: 9;
-}
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-tr:hover {
-    background-color: #ffe5e5;
-    transition: background-color 0.3s ease;
-}
-hr {
-    border: none;
-    border-top: 2px solid #ddd;
-    margin: 30px 0;
-}
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; min-width: 1000px; }
+    .header-nav { position: sticky; top: 0; background: #f5f5f5; z-index: 100; padding-bottom: 15px; }
+    .back-btn { display: inline-block; background: white; color: #164397 !important; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 20px; margin-bottom: 15px; border: 2px solid #164397; }
+    .tab-container { display: flex; gap: 15px; align-items: center; }
+    .tab-btn { padding: 10px 30px; cursor: pointer; font-weight: bold; border-radius: 8px; font-size: 20px; border: 2px solid; background: white; }
+    .btn-donvi { color: #164397; border-color: #164397; }
+    .btn-donvi.active { background: #164397; color: white; }
+    .btn-lanhdao { color: #e67e22; border-color: #e67e22; }
+    .btn-lanhdao.active { background: #e67e22; color: white; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .day-title { color: #164397; margin: 30px 0 15px; font-size: 24px; background: #e9e9e9; padding: 10px; border-radius: 5px; }
+    table { width: 100%; min-width: 900px; border-collapse: collapse; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-size: 16px; margin-bottom: 20px; }
+    th, td { padding: 12px; border: 1px solid #ccc; }
+    th { background: #164397; color: white; }
+    tr:nth-child(even) { background: #fafafa; }
+    tr:hover { background: #fff9c4; }
+    hr { border: none; border-top: 2px solid #ccc; margin: 40px 0; }
 </style>
 </head>
 <body>
-<a href="https://bao-1340.github.io/LichTuanDNPC/" class="back-btn">← Quay lại</a>
-<h2 class='day-title'>Thứ 2 ngày 11 tháng 5 năm 2026</h2>
+<div class="header-nav">
+    <a href="https://bao-1340.github.io/LichTuanDNPC/" class="back-btn">← Quay lại</a>
+    <div class="tab-container">
+        <button class="tab-btn btn-donvi active" onclick="openTab(event, 'donvi')">LỊCH ĐƠN VỊ</button>
+        <button class="tab-btn btn-lanhdao" onclick="openTab(event, 'lanhdao')">LỊCH LÃNH ĐẠO</button>
+    </div>
+</div>
+<div id="donvi" class="tab-content active"><h2 class='day-title'>Thứ 2 ngày 11 tháng 5 năm 2026</h2>
 <div class="row" style="overflow:auto;">
  <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
   <thead>
@@ -933,10 +893,394 @@ hr {
  </table>
 </div>
 <hr>
-<br><h2 class='day-title'>LỊCH LÃNH ĐẠO + CTCĐ</h2>
-<table class="table table-bordered table-condensed" id="tblLichLD">
+</div>
+<div id="lanhdao" class="tab-content"><h2 class='day-title'>Thứ 2 ngày 11 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td colspan="8" style="background-color:#fdf6b9; height:30px;">
+     <span class="h7 text-primary" style="font-weight:bold;">
+      LỊCH CHỜ DUYỆT
+     </span>
+     <div class="pull-right">
+      <span class="badge badge-danger" style="font-size:14px;">
+       1
+      </span>
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      08:00
+     </span>
+     -
+     <span>
+      11:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      CS1: 4.04 - Mỹ Khê - 25
+      <br/>
+      CS2: 403 - Thanh Hóa - Cơ sở 2
+     </span>
+    </td>
+    <td class="py-1">
+     Họp phương án cấp điện khu du lịch sinh thái Bà Nà Hills
+    </td>
+    <td class="text-center p-1" style="font-weight:bold;">
+     <h6>
+      <span class="badge badge-primary p-2" style="background-color: #007bff !important; color: #ffffff !important; padding: 5px 12px !important; border-radius: 6px !important; font-weight: bold !important; font-size: 1.1em !important; display: inline-block !important; text-align: center !important;">
+       GIÁM ĐỐC
+      </span>
+     </h6>
+    </td>
+    <td>
+     PGĐ.KT Nguyễn Đình Tuân, PGĐ.KT Võ Anh Hùng, KH, KT, ĐĐ, QLĐT, ÐLHV
+    </td>
+    <td class="text-center p-1">
+     KT, ÐLHV
+    </td>
+    <td class="text-center p-1">
+    </td>
+    <td class="p-1" style="max-width:300px;">
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 3 ngày 12 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 4 ngày 13 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Công ty cổ phần EVN Quốc tế - 145 Xô Viết Nghệ Tĩnh, Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     Tham dự đại hội cổ đông thường niên EVNI năm 2026
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A300CC;">
+      PGĐ.KD Bùi Đỗ Quốc Huy
+     </span>
+    </td>
+    <td class="py-1">
+     PGĐ.KD Bùi Đỗ Quốc Huy
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135362">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 5 ngày 14 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 6 ngày 15 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      13:30
+     </span>
+     -
+     <span>
+      20:30
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      Khánh sạn Grand Mercure, Lô A1, Đảo Xanh, Phường Hòa Cường, Đà Nẵng
+     </span>
+    </td>
+    <td class="py-1">
+     Dự Hội thảo "Công trình xanh và giải phám giảm phát thải Carbon" và Hội nghị hội viên năm 2026
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#A52A2A;">
+      PGĐ.ĐTXD Phan Hiền Trí
+     </span>
+    </td>
+    <td class="py-1">
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135301">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+   <tr style="color:#000000;background-color:#fff;">
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#;">
+      14:00
+     </span>
+     -
+     <span>
+      17:00
+     </span>
+     <br/>
+     <span style="color:#0281ef;">
+      4.04 - Mỹ Khê - 25
+     </span>
+    </td>
+    <td class="py-1">
+     Làm việc với Công ty TNHH ĐT Bất động sản Đà Nẵng Centre Point về chủ trương cấp điện doanh nghiệp
+    </td>
+    <td class="text-center py-1" style="font-weight:bold;">
+     <span style="color:#FF6633;">
+      PGĐ.KT Nguyễn Đình Tuân
+     </span>
+    </td>
+    <td class="py-1">
+     Kính mời PGĐKT Nguyễn Đình Tuân, KT, ĐĐ, ĐLHC, đại diện Centre Point
+     <button class="PHANCONG btn btn-sm btn-link" hidden="" type="button" value="135051">
+      <i class="fa fa-group text-primary">
+      </i>
+     </button>
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="text-center py-1">
+    </td>
+    <td class="py-1" style="max-width:300px;">
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Thứ 7 ngày 16 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+  </tbody>
+ </table>
+</div>
+<hr>
+<h2 class='day-title'>Chủ nhật ngày 17 tháng 5 năm 2026</h2>
+<div class="row" style="overflow:auto;">
+ <table border="1" class="tblichtuan" style="border-color:#d2cccc;" width="100%">
+  <thead>
+   <tr style="background-color:#f5f2f2;">
+    <th class="text-center py-1" style="width:160px;min-width:100px;">
+     Thời gian / Địa điểm
+    </th>
+    <th class="text-center py-1" style="width:500px;min-width:200px;max-width:800px;">
+     Nội dung
+    </th>
+    <th class="text-center py-1" style="width:150px;min-width:100px;">
+     Chủ trì
+    </th>
+    <th class="text-center py-1" style="width:450px;min-width:150px;max-width:400px;">
+     Thành phần
+    </th>
+    <th class="text-center py-1" style="width:120px;min-width:100px;">
+     Chuẩn bị
+    </th>
+    <th class="text-center" style="width:120px;">
+     Tài liệu
+    </th>
+    <th class="text-center" style="min-width:100px;">
+     Ghi chú
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+  </tbody>
+ </table>
+</div>
+<hr>
+<br><h2 class='day-title' style='background:#e67e22; color:white;'>LỊCH KHÁC</h2>
+<table class="table table-sm table-bordered" id="tblLichLD">
  <thead>
-  <tr class="text-dark" id="TableHeaderRow2">
+  <tr bgcolor="#F5F2F2" class="text-dark" id="TableHeaderRow2">
    <th class="text-center" id="TableHeaderCell10" style="min-width: 100px" width="200">
     Thời gian
    </th>
@@ -993,4 +1337,18 @@ hr {
   </tr>
  </tbody>
 </table>
-</body></html>
+</div>
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+    window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
